@@ -12,8 +12,8 @@
             android:layout_height="wrap_content"
             tools:text="Hello World!"
             android:id="@+id/name_text"
-            android:textSize="20sp"
-            android:textColor="@android:color/black"
-            android:textAlignment="center"/>
+            android:text="@string/name_string"
+            android:textAlignment="center"
+            style="@style/NameStyle"/>
 
 </LinearLayout>
