@@ -13,10 +13,15 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var dataBinding: ActivityMainBinding
 
+    private val myName: MyName = MyName("Chiranth")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+        dataBinding.myName = myName
+
         //setContentView(R.layout.activity_main)
         dataBinding.doneButton.setOnClickListener {
             addNickName(it)
@@ -27,8 +32,9 @@ class MainActivity : AppCompatActivity() {
     private fun addNickName(view: View) {
 
         dataBinding.apply {
+            myName?.nickName = dataBinding.nickNameEdit.text.toString()
             invalidateAll() //need to refresh all binding data
-            nickname_text.text = nickName_edit.text
+            //nickname_text.text = nickName_edit.text
             view.visibility = View.GONE
             nickName_edit.visibility = View.GONE
             nickname_text.visibility = View.VISIBLE
