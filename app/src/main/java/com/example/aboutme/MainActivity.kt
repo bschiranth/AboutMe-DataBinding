@@ -5,26 +5,34 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import androidx.databinding.DataBindingUtil
+import com.example.aboutme.databinding.ActivityMainBinding
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var dataBinding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        done_button.setOnClickListener {
+        dataBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        //setContentView(R.layout.activity_main)
+        dataBinding.doneButton.setOnClickListener {
             addNickName(it)
         }
+
     }
 
     private fun addNickName(view: View) {
-        nickname_text.text = nickName_edit.text
 
-        view.visibility = View.GONE
-        nickName_edit.visibility = View.GONE
-
-        nickname_text.visibility = View.VISIBLE
+        dataBinding.apply {
+            invalidateAll() //need to refresh all binding data
+            nickname_text.text = nickName_edit.text
+            view.visibility = View.GONE
+            nickName_edit.visibility = View.GONE
+            nickname_text.visibility = View.VISIBLE
+        }
 
         hideKeyBoard(view)
     }
