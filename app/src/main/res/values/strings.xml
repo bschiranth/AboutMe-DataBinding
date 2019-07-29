@@ -16,4 +16,6 @@
         \nYou should ask someone else about fishing, though.\n\n
 
     </string>
+    <string name="what_is_your_nickName">What is your NickName?</string>
+    <string name="done">Done</string>
 </resources>
